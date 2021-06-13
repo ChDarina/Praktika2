@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Praktika2.Models.Illustrations>
+@using Microsoft.AspNet.Identity
+@using Praktika2.Models;
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@if (Request.IsAuthenticated)
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DLDate)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DLDate)
+                </td>
+                <td>
+    @using (var db = new ApplicationDbContext())
+    {
+        string id = User.Identity.GetUserId();
+        var customer = db.Customers.Where(c => id == c.UserId);
+        if (customer.Any())
+        {
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.IllustratorID });
+                        </td>
+            }
+            }
+        </td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <div class="jumbotron">
+        <h1>Практика</h1>
+        <p class="lead">Для того, чтобы приступить к использованию системы, пожалуйста, зарегистрируйтесь или войдите как иллюстратор или покупатель</p>
+    </div>
+}

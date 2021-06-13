@@ -1,0 +1,64 @@
+﻿@model Praktika2.Models.Illustrations
+@using Microsoft.AspNet.Identity
+@using Praktika2.Models;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Illustrations</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Illustrators.IllustratorNickname)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Illustrators.IllustratorNickname)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DLDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DLDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Privacy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Privacy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Hiding)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Hiding)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.IllustrationID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

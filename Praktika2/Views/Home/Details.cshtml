@@ -1,0 +1,48 @@
+﻿@model Praktika2.Models.Illustrators
+    @using Praktika2.Models;
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Автор иллюстрации</h2>
+
+<div>
+    <h4>Иллюстратор</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IllustratorEMail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IllustratorEMail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IllustratorNickname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IllustratorNickname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IllustratorPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IllustratorPhone)
+        </dd>
+    </dl>
+    @*<h4>Социальные сети</h4>*@
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @Html.ActionLink("Создать заказ", "Create", "Orders")
+</div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

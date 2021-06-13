@@ -1,0 +1,88 @@
+﻿@model Praktika2.Models.Orders
+@using Microsoft.AspNet.Identity
+@using Praktika2.Models;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Orders</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Customers.UserId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Customers.UserId)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Illustrations.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Illustrations.Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Illustrators.UserId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Illustrators.UserId)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Commentary)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Commentary)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Feedback)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Feedback)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderStatus)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OrderStatus)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OrderDate)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.OrderID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
