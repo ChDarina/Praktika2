@@ -7,13 +7,16 @@
 
 @if (Request.IsAuthenticated)
 {
+    <h3>Список иллюстраций</h3>
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Название иллюстрации
+                @*@Html.DisplayNameFor(model => model.Name)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DLDate)
+                Дата загрузки
+                @*@Html.DisplayNameFor(model => model.DLDate)*@
             </th>
             <th></th>
         </tr>
@@ -36,14 +39,12 @@
         if (customer.Any())
         {
         <td>
-            @Html.ActionLink("Details", "Details", new { id = item.IllustratorID });
-                        </td>
-            }
-            }
+            @Html.ActionLink("Details", "Details", new { id = item.IllustratorID })
         </td>
-            </tr>
         }
-
+    }
+</tr>
+        }
     </table>
 }
 else

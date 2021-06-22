@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>Ваши заказы</title>
 </head>
 <body>
     <p>
@@ -15,28 +15,36 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Customers.CustomerNickname)
+                Покупатель
+                @*@Html.DisplayNameFor(model => model.Customers.CustomerNickname)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Illustrations.Name)
+                Иллюстратор
+                @*@Html.DisplayNameFor(model => model.Illustrators.IllustratorNickname)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Illustrators.IllustratorNickname)
+                Название иллюстрации
+                @*@Html.DisplayNameFor(model => model.Illustrations.Name)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Commentary)
+                Комментарий
+                @*@Html.DisplayNameFor(model => model.Commentary)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Feedback)
+                Отзыв
+                @*@Html.DisplayNameFor(model => model.Feedback)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OrderStatus)
+                Статус заказа
+                @*@Html.DisplayNameFor(model => model.OrderStatus)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                Цена
+                @*@Html.DisplayNameFor(model => model.Price)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OrderDate)
+                Дата заказа
+                @*@Html.DisplayNameFor(model => model.OrderDate)*@
             </th>
             <th></th>
         </tr>
@@ -49,10 +57,10 @@
                 @Html.DisplayFor(modelItem => item.Customers.CustomerNickname)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Illustrations.Name)
+                @Html.DisplayFor(modelItem => item.Illustrators.IllustratorNickname)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Illustrators.IllustratorNickname)
+                @Html.DisplayFor(modelItem => item.Illustrations.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Commentary)

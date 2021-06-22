@@ -33,14 +33,14 @@ namespace Praktika2.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Это работа на практику Чупиной Д.В., ПИ-19-1";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Контакт на случай, если программа будет работать неправильно";
 
             return View();
         }

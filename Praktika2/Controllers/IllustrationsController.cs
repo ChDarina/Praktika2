@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Praktika2.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Praktika2.Controllers
 {
@@ -39,7 +40,7 @@ namespace Praktika2.Controllers
         // GET: Illustrations/Create
         public ActionResult Create()
         {
-            ViewBag.IllustratorID = new SelectList(db.Illustrators, "IllustratorID", "IllustratorNickname");
+            //ViewBag.IllustratorID = new SelectList(db.Illustrators, "IllustratorID", "IllustratorNickname");
             return View();
         }
 
@@ -50,6 +51,10 @@ namespace Praktika2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IllustrationID,IllustratorID,Name,DLDate,Privacy,Hiding")] Illustrations illustrations)
         {
+            string userId = User.Identity.GetUserId();
+            var illustrator = db.Illustrators.Where(c => userId == c.UserId.ToString()).ToList();
+            illustrations.IllustratorID = illustrator[0].IllustratorID;
+            illustrations.DLDate = DateTime.Today;
             if (ModelState.IsValid)
             {
                 db.Illustrations.Add(illustrations);
@@ -57,7 +62,7 @@ namespace Praktika2.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IllustratorID = new SelectList(db.Illustrators, "IllustratorID", "IllustratorNickname", illustrations.IllustratorID);
+            //ViewBag.IllustratorID = new SelectList(db.Illustrators, "IllustratorID", "IllustratorNickname", illustrations.IllustratorID);
             return View(illustrations);
         }
 
@@ -73,7 +78,7 @@ namespace Praktika2.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IllustratorID = new SelectList(db.Illustrators, "IllustratorID", "IllustratorNickname", illustrations.IllustratorID);
+            //ViewBag.IllustratorID = new SelectList(db.Illustrators, "IllustratorID", "IllustratorNickname", illustrations.IllustratorID);
             return View(illustrations);
         }
 
@@ -90,7 +95,7 @@ namespace Praktika2.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IllustratorID = new SelectList(db.Illustrators, "IllustratorID", "IllustratorNickname", illustrations.IllustratorID);
+            //ViewBag.IllustratorID = new SelectList(db.Illustrators, "IllustratorID", "IllustratorNickname", illustrations.IllustratorID);
             return View(illustrations);
         }
 
