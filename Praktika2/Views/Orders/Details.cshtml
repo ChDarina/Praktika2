@@ -3,7 +3,9 @@
 @using Praktika2.Models;
 
 <!DOCTYPE html>
-
+@{
+    ViewBag.Title = "Информация о заказе";
+}
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -81,8 +83,8 @@
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.OrderID }) |
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Редактировать", "Edit", new { id = Model.OrderID }) |
+        @Html.ActionLink("Вернуться к списку заказов", "Index")
     </p>
 </body>
 </html>

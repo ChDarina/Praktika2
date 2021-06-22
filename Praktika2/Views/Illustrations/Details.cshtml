@@ -3,7 +3,9 @@
 @using Praktika2.Models;
 
 <!DOCTYPE html>
-
+@{
+    ViewBag.Title = "Об иллюстрации";
+}
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -11,8 +13,8 @@
 </head>
 <body>
     <div>
-        <h4>Illustrations</h4>
-        <hr />
+        @*<h4>Illustrations</h4>*@
+        <hr/>
         <dl class="dl-horizontal">
             <dt>
                 @Html.DisplayNameFor(model => model.Illustrators.IllustratorNickname)
@@ -57,8 +59,8 @@
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.IllustrationID }) |
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Изменить иллюстрацию", "Edit", new { id = Model.IllustrationID }) |
+        @Html.ActionLink("Вернуться к портофолио", "Index")
     </p>
 </body>
 </html>

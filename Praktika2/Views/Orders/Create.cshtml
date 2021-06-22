@@ -3,11 +3,13 @@
 @using Praktika2.Models;
 
 <!DOCTYPE html>
-
+@{
+    ViewBag.Title = "Создание заказа";
+}
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
+    <title>Создать новый заказ</title>
 </head>
 <body>
     @Scripts.Render("~/bundles/jquery")
@@ -19,7 +21,7 @@
         @Html.AntiForgeryToken()
         
         <div class="form-horizontal">
-            <h4>Создать заказ</h4>
+            @*<h4>Создать заказ</h4>*@
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
@@ -86,7 +88,7 @@
     }
     
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Вернуться к списку заказов", "Index")
     </div>
 </body>
 </html>

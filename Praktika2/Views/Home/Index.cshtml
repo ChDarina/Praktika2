@@ -1,56 +1,70 @@
 ﻿@model IEnumerable<Praktika2.Models.Illustrations>
+@*@model Praktika2.Models.Technics*@
 @using Microsoft.AspNet.Identity
 @using Praktika2.Models;
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Поиск";
 }
 
 @if (Request.IsAuthenticated)
 {
     <h3>Список иллюстраций</h3>
-    <table class="table">
-        <tr>
-            <th>
-                Название иллюстрации
-                @*@Html.DisplayNameFor(model => model.Name)*@
-            </th>
-            <th>
-                Дата загрузки
-                @*@Html.DisplayNameFor(model => model.DLDate)*@
-            </th>
-            <th></th>
-        </tr>
+    <form asp-controller="Illustrations" asp-action="Index">
+        <p>
+            Поиск: <input type="text" name="SearchString" />
+            <input type="submit" value="Filter" />
+        </p>
+    </form>
+            <table class="table">
+                <tr>
+                    <th>
+                        Название иллюстрации
+                        @*@Html.DisplayNameFor(model => model.Name)*@
+                    </th>
+                    <th>
+                        Иллюстратор
+                        @*@Html.DisplayNameFor(model => model.Name)*@
+                    </th>
+                    <th>
+                        Дата загрузки
+                        @*@Html.DisplayNameFor(model => model.DLDate)*@
+                    </th>
+                    <th></th>
+                </tr>
 
-        @foreach (var item in Model)
-        {
+                @foreach (var item in Model)
+                {
 
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DLDate)
-                </td>
-                <td>
-    @using (var db = new ApplicationDbContext())
-    {
-        string id = User.Identity.GetUserId();
-        var customer = db.Customers.Where(c => id == c.UserId);
-        if (customer.Any())
-        {
-        <td>
-            @Html.ActionLink("Details", "Details", new { id = item.IllustratorID })
-        </td>
-        }
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Illustrators.IllustratorNickname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DLDate)
+                        </td>
+                        <td>
+                            @using (var db = new ApplicationDbContext())
+                            {
+                                string id = User.Identity.GetUserId();
+                                var customer = db.Customers.Where(c => id == c.UserId);
+                                if (customer.Any())
+                                {
+                                <td>
+                                    @Html.ActionLink("Details", "Details", new { id = item.IllustratorID })
+                                </td>
+                                }
+                            }
+                        </tr>
+                }
+            </table>
     }
-</tr>
-        }
-    </table>
-}
 else
 {
     <div class="jumbotron">
-        <h1>Практика</h1>
-        <p class="lead">Для того, чтобы приступить к использованию системы, пожалуйста, зарегистрируйтесь или войдите как иллюстратор или покупатель</p>
+    <h1>Практика</h1>
+    <p class="lead">Для того, чтобы приступить к использованию системы, пожалуйста, зарегистрируйтесь или войдите как иллюстратор или покупатель</p>
     </div>
 }

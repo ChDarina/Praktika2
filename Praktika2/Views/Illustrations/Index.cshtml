@@ -3,7 +3,9 @@
 @using Praktika2.Models;
 
 <!DOCTYPE html>
-
+@{
+    ViewBag.Title = "Ваше портфолио";
+}
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -11,8 +13,13 @@
 </head>
 <body>
     <p>
-        @Html.ActionLink("Create New", "Create")
     </p>
+    <p>
+        @Html.ActionLink("Загрузить иллюстрацию", "Create")
+    </p>
+
+
+
     <table class="table">
         <tr>
             <th>
@@ -51,9 +58,9 @@
                 @Html.DisplayFor(modelItem => item.Hiding)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.IllustrationID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.IllustrationID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.IllustrationID })
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.IllustrationID }) |
+                @Html.ActionLink("Посмотреть информацию об иллюстрации", "Details", new { id = item.IllustrationID }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.IllustrationID })
             </td>
             }
         </tr>

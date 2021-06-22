@@ -2,7 +2,7 @@
     @using Praktika2.Models;
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Информация об иллюстраторе";
 }
 
 <h2>Автор иллюстрации</h2>
@@ -12,7 +12,8 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.IllustratorEMail)
+            @*@Html.DisplayNameFor(model => model.IllustratorEMail)*@
+            Электронная почта иллюстратора:
         </dt>
 
         <dd>
@@ -20,20 +21,21 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.IllustratorNickname)
+            @*@Html.DisplayNameFor(model => model.IllustratorNickname)*@
+            Никнейм иллюстратора:
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.IllustratorNickname)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.IllustratorPhone)
-        </dt>
+        </dt>*@
 
-        <dd>
+        @*<dd>
             @Html.DisplayFor(model => model.IllustratorPhone)
-        </dd>
+        </dd>*@
     </dl>
     @*<h4>Социальные сети</h4>*@
 
@@ -44,5 +46,5 @@
     </div>
 </div>
 <p>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Вернуться", "Index")
 </p>

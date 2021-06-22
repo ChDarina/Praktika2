@@ -1,7 +1,9 @@
 ﻿using Praktika2.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -18,12 +20,17 @@ namespace Praktika2.Controllers
         {
             context.Dispose();
         }
-        public ActionResult Index()
+        public async Task<ActionResult> Index(string searchString)
         {
-            ViewBag.IllustrationTechnics = new SelectList(context.Technics, "TechnicsID", "TechnicsName");
-            var ill = context.Illustrations.Where(c => c.Privacy == false);
-            List<Illustrations> ill2 = ill.ToList();
-            return View("Index", ill2);
+            var illustrations = from m in context.Illustrations
+                         select m;
+            Technics tech = new Technics();
+            tech.TechnicName = searchString;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                illustrations = illustrations.Where(s => s.Name.Contains(searchString) || s.Illustrators.IllustratorNickname.Contains(searchString));
+            }
+            return View(await illustrations.ToListAsync());
         }
         public ActionResult Details(int id)
         {
@@ -34,14 +41,12 @@ namespace Praktika2.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Это работа на практику Чупиной Д.В., ПИ-19-1";
-
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Контакт на случай, если программа будет работать неправильно";
-
+            ViewBag.Message = "Пишите на данную электронную почту, если программа будет работать неправильно";
             return View();
         }
     }
