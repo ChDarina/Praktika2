@@ -26,16 +26,20 @@
     {
         string id = User.Identity.GetUserId();
         var customer = db.Customers.Where(c => id == c.UserId);
+        var illustrator = db.Illustrators.Where(i => id == i.UserId);
         if (customer.Any())
         {
             @Html.ActionLink("Покупатель", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" });
         }
-        var illustrator = db.Illustrators.Where(i => id == i.UserId);
         if (illustrator.Any())
         {
             @Html.ActionLink("Иллюстратор", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" });
         }
     }
+}
+else
+{
+    @Html.ActionLink("Домашняя страница", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" });
 }
             </div>
             <div class="navbar-collapse collapse">

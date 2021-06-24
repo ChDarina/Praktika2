@@ -55,13 +55,13 @@ namespace Praktika2.Controllers
             var customer = db.Customers.Where(c => userId == c.UserId.ToString()).ToList();
             orders.CustomerID = customer[0].CustomerID;
             orders.OrderDate = DateTime.Today;
+            orders.OrderStatus = "В ожидании принятия";
             if (ModelState.IsValid)
             {
                 db.Orders.Add(orders);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             //ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CustomerNickname", orders.CustomerID);
             //ViewBag.IllustratorID = new SelectList(db.Illustrators, "IllustratorID", "IllustratorNickname", orders.IllustratorID);
             return View(orders);
@@ -79,9 +79,16 @@ namespace Praktika2.Controllers
             {
                 return HttpNotFound();
             }
-            //ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CustomerNickname", orders.CustomerID);
-            ViewBag.IllustrationID = new SelectList(db.Illustrations, "IllustrationID", "Name", orders.IllustrationID);
-            //ViewBag.IllustratorID = new SelectList(db.Illustrators, "IllustratorID", "IllustratorNickname", orders.IllustratorID);
+            string userId = User.Identity.GetUserId();
+            var illustrator = db.Illustrators.Where(c => userId == c.UserId.ToString()).ToList();
+            int illid;
+            if (illustrator.Any())
+            {
+                illid = illustrator[0].IllustratorID;
+                var illustrations = db.Illustrations.Where(c => illid == c.IllustratorID);
+                ViewBag.IllustrationID = new SelectList(illustrations, "IllustrationID", "Name"/*, orders.IllustrationID*/);
+            }
+            ViewBag.OrderStatus = new SelectList(new[] { "В ожидании принятия", "Принят", "Оплачен", "В процессе", "Готов" });
             return View(orders);
         }
 

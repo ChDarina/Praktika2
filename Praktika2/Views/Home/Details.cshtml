@@ -12,24 +12,23 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @*@Html.DisplayNameFor(model => model.IllustratorNickname)*@
+            Никнейм:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IllustratorNickname)
+        </dd>        
+        <dt>
             @*@Html.DisplayNameFor(model => model.IllustratorEMail)*@
-            Электронная почта иллюстратора:
+            Электронная почта:
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.IllustratorEMail)
         </dd>
-
-        <dt>
-            @*@Html.DisplayNameFor(model => model.IllustratorNickname)*@
-            Никнейм иллюстратора:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IllustratorNickname)
-        </dd>
-
         @*<dt>
+            Номер телефона
             @Html.DisplayNameFor(model => model.IllustratorPhone)
         </dt>*@
 
@@ -37,13 +36,88 @@
             @Html.DisplayFor(model => model.IllustratorPhone)
         </dd>*@
     </dl>
-    @*<h4>Социальные сети</h4>*@
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            @Html.ActionLink("Создать заказ", "Create", "Orders")
-</div>
-    </div>
+
+    <h4>Социальные сети</h4>
+    <hr />
+    <table class="table">
+        <tr>
+            <th>
+                Соцсеть
+            </th>
+            <th>
+                Ссылка
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.SocialMediaIllustrators)
+        {
+            if (item.IllustratorReference != null)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SocialMedias.SocialMediaName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IllustratorReference)
+                    </td>
+                </tr>
+            }
+        }
+        </table>
+
+        <h4>Техники исполнения</h4>
+        <hr />
+        <table class="table">
+            @foreach (var item in Model.Technics)
+            {
+                if (item.Illustrators != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TechnicName)
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+
+
+    <h4>Отзывы</h4>
+    <hr />
+    <table class="table">
+        <tr>
+            <th>
+                Покупатель
+            </th>
+            <th>
+                Отзыв
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Orders)
+        {
+            if (item.Feedback != null)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Customers.CustomerNickname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Feedback)
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+    <hr />
+    @*<div class="form-group">
+        <div class="col-md-offset-2 col-md-10">*@
+    @Html.ActionLink("Создать заказ", "Create", "Orders")
+        @*</div>
+    </div>*@
 </div>
 <p>
     @Html.ActionLink("Вернуться", "Index")

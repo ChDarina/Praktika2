@@ -1,0 +1,50 @@
+﻿@model Praktika2.Models.SocialMediaIllustrators
+
+<!DOCTYPE html>
+@{
+    ViewBag.Title = "Просмотр информации о соцсети";
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Просмотр информации</title>
+</head>
+<body>
+    <div>
+        <h4>Социальная сеть</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            @*<dt>
+                @Html.DisplayNameFor(model => model.Illustrators.UserId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Illustrators.UserId)
+            </dd>*@
+    
+            <dt>
+                Название соцсети
+                @*@Html.DisplayNameFor(model => model.SocialMedias.SocialMediaName)*@
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SocialMedias.SocialMediaName)
+            </dd>
+    
+            <dt>
+                Ссылка
+                @*@Html.DisplayNameFor(model => model.IllustratorReference)*@
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IllustratorReference)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Редактировать", "Edit", new { userid = Model.IllustratorID, socid = Model.SocialMediaID }) |
+        @Html.ActionLink("Вернуться", "Index")
+    </p>
+</body>
+</html>

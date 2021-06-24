@@ -202,6 +202,8 @@
     <Compile Include="Controllers\IllustrationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\SocialMediaCustomersController.cs" />
+    <Compile Include="Controllers\SocialMediaIllustratorsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -296,6 +298,16 @@
     <Content Include="Views\Illustrations\Details.cshtml" />
     <Content Include="Views\Illustrations\Edit.cshtml" />
     <Content Include="Views\Illustrations\Index.cshtml" />
+    <Content Include="Views\SocialMediaCustomers\Create.cshtml" />
+    <Content Include="Views\SocialMediaCustomers\Delete.cshtml" />
+    <Content Include="Views\SocialMediaCustomers\Details.cshtml" />
+    <Content Include="Views\SocialMediaCustomers\Edit.cshtml" />
+    <Content Include="Views\SocialMediaCustomers\Index.cshtml" />
+    <Content Include="Views\SocialMediaIllustrators\Create.cshtml" />
+    <Content Include="Views\SocialMediaIllustrators\Delete.cshtml" />
+    <Content Include="Views\SocialMediaIllustrators\Details.cshtml" />
+    <Content Include="Views\SocialMediaIllustrators\Edit.cshtml" />
+    <Content Include="Views\SocialMediaIllustrators\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

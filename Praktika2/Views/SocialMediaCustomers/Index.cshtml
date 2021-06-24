@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Praktika2.Models.SocialMediaCustomers>
+@using Microsoft.AspNet.Identity
+
+<!DOCTYPE html>
+@{
+    ViewBag.Title = "Список ссылок на соцсети";
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Социальные сети</title>
+</head>
+<body>
+    <h4>Социальные сети</h4>
+    <p>
+        @Html.ActionLink("Добавить ссылку", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Название соцсети
+                @*@Html.DisplayNameFor(model => model.SocialMedias.SocialMediaName)*@
+            </th>
+            <th>
+                Ссылка
+                @*@Html.DisplayNameFor(model => model.SocialMediaReference)*@
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model)
+    {
+        if (item.Customers.UserId == User.Identity.GetUserId())
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SocialMedias.SocialMediaName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SocialMediaReference)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { userid = item.CustomerID, socid = item.SocialMediaID }) |
+                @Html.ActionLink("Просмотреть", "Details", new { userid = item.CustomerID, socid = item.SocialMediaID }) |
+                @Html.ActionLink("Удалить", "Delete", new { userid = item.CustomerID, socid = item.SocialMediaID })
+            </td>
+        </tr>
+            }
+        }
+    
+    </table>
+</body>
+</html>

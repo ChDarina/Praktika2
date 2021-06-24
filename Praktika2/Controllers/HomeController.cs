@@ -24,8 +24,6 @@ namespace Praktika2.Controllers
         {
             var illustrations = from m in context.Illustrations
                          select m;
-            Technics tech = new Technics();
-            tech.TechnicName = searchString;
             if (!String.IsNullOrEmpty(searchString))
             {
                 illustrations = illustrations.Where(s => s.Name.Contains(searchString) || s.Illustrators.IllustratorNickname.Contains(searchString));
